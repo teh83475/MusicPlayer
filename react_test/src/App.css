@@ -3,6 +3,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-y:hidden;
 }
 
 .App-logo {
@@ -42,11 +43,17 @@
 
 *{
   z-index: 1;
+  scrollbar-color: rgb(196, 196, 196) rgba(255, 255, 255, 0);
+  scrollbar-width:thin;
 }
 
 [class*="col-"] {
   float: left;
 
+}
+
+.hidden{
+  visibility: hidden;
 }
 
 ul{
@@ -62,6 +69,7 @@ li{
 li .selected{
 
 }
+
 .main{
   background-color: rgb(21, 160, 74);
   flex-grow: 1;
@@ -71,27 +79,91 @@ li .selected{
 .sidebar{
   background-color: yellow;
   height:100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-list{
+  height:100%;
   overflow-y: scroll;
+}
+
+.sidebar-new-collection {
+  display:flex;
+  flex-direction: row;
+}
+
+.sidebar-new-collection *{
+  display:inline-block;
+}
+
+.sidebar-new-collection-text{
+  flex-grow: 1;
 }
 
 .main-song-select{
   background-color: rgb(255, 187, 0);
   height:100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  text-align: right;
+}
+
+.main-song-select-list{
+  background-color: rgb(255, 187, 0);
+  height:100%;
+  width:100%;
+  
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .top-nav {
   background-color: purple;
+  text-align: right;
+  height: 35pt;
 }
 
-.login-block {
-  
+.logout-block {
+  display: flex;
+  flex-direction: row;
   width: max-content;
   text-align: right;
+  margin-left: auto; 
+  margin-right: 0;
 }
 
-.login-block div {
-  text-align: center;
+.logout-block button {
+  display:inline-block;
+  height: 35pt;
+  width: 42pt;
+}
+
+
+.login-block {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  text-align: right;
+  margin-left: auto; 
+  margin-right: 0;
+}
+
+.login-block .input {
+  text-align: right;
+  display:inline-block;
+}
+
+.login-block button {
+  display:inline-block;
+  height: 35pt;
+  width: 42pt;
+}
+
+.control{
+  height: 35pt;
 }
 
 .volume-control{
@@ -143,13 +215,18 @@ li .selected{
   Margin: 0;
 }
 
+.remove-collection-button{
+  margin-left: auto; 
+  margin-right: 0;
+  width:max-content;
+}
+
 .music-info {
   text-align: left;
   
 }
 
 .music-item{
-  
   width:99.5%;
   border-style:groove;
   border-radius: 7pt;
@@ -159,13 +236,15 @@ li .selected{
   flex-direction: row;
 }
 
+
+
 .music-item-info{
   flex-grow: 1;
   display:inline-block;
 }
 
 .music-item-action{
- 
+  font-size: 20pt;
   display:inline-block;
 }
 
@@ -184,10 +263,27 @@ li .selected{
 }
 
 .collection-item{
+  
   border-style:groove;
   border-radius: 7pt;
   border-color: #4fb5d1;
   background-color: #61dafb;
+  display: flex;
+  flex-direction: row;
+}
+
+.collection-item-info{
+  
+  display:inline-block;
+}
+
+.play-icon{
+  
+  font-size: 20pt;
+  text-align: right;
+  display:inline-block;
+  margin-left: auto; 
+  margin-right: 0;
 }
 
 .collection-item:hover{
@@ -199,9 +295,18 @@ li .selected{
   
 }
 .collection-item-count{
-  
   text-align: left;
-  
+}
+
+
+
+.selected{
+  border-color: #0d9c00;
+  background-color: #00c431;
+}
+
+.selected:hover{
+  background-color: #27e016;
 }
 
 .add-to-collection-pop-up{
@@ -212,7 +317,7 @@ li .selected{
   width: 250pt;
   border-radius: 15pt;
   background-color: #f5f5f5;
-  z-index: 3;
+  z-index: 4;
   margin: auto;  
   inset:0 0 0 0;
   
@@ -225,7 +330,7 @@ li .selected{
   height: 100%;
   width: 100%;
   background-color: #2b2b2bb0;
-  z-index: 2;
+  z-index: 3;
   margin: auto;  
   inset:0 0 0 0;
   
